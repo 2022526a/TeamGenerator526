@@ -25,13 +25,26 @@ public class TeamGenerator526 {
     /**
      * @param args the command line arguments
      */
+    
+    
  public static void main(String[] args) {
         List<Person> people = new ArrayList<>();
         List<Team> teams = new ArrayList<>();
         Random random = new Random();
+        List<String>teamNames = new ArrayList<>();
+        teamNames.add("Team Dublin");teamNames.add("Team Dundalk");
+        teamNames.add("Team LetterKenny");teamNames.add("Team Drogeda");
+        teamNames.add("Team Galway");teamNames.add("Team Sligo");
+        teamNames.add("Team Clonmel");teamNames.add("Team Swords");
+        teamNames.add("Team Cork");teamNames.add("Team Carlow");
+        teamNames.add("Team Wexford");teamNames.add("Team Bray");
+        teamNames.add("Team Limerick");teamNames.add("Team Tralee");
+        teamNames.add("Team Mulingar");teamNames.add("Team Navan");
+        teamNames.add("Team Waterford");teamNames.add("Team Ennis");
+        teamNames.add("Team Athlone");teamNames.add("Team Drogeda");
 
         // Read data from the CSV file and load it into memory
-        try (BufferedReader reader = new BufferedReader(new FileReader("MOCK_data.csv"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("MOCK_DATA.csv"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
