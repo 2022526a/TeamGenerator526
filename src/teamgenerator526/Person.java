@@ -9,5 +9,9 @@ package teamgenerator526;
  * @author 35389
  */
 public class Person {
+    int id ;
+    String firstName;
+    String lastName;
+    String email;
     
 }
