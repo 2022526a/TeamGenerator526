@@ -29,6 +29,13 @@ public class TeamGenerator526 {
             String lastName = parts[2];
             String email = parts[3];
             Person person =new Person (id , firstName, lastName , email);
+        }
+        }catch (IOException e){
+            System.out.println("Error reading the CSV file.");
+                e.printStackTrace();
+                System.exit(1);
+                }
+                
             
             
         }
