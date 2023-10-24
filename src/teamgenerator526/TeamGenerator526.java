@@ -25,6 +25,8 @@ public class TeamGenerator526 {
     List<Person> people = new ArrayList<>();
     List<Team> teams = new ArrayList<>();
     Random random = new Random ();
+    List<String> teamNames = new ArrayList<>();
+     
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         //adding csv file and reading it into memory
@@ -42,15 +44,18 @@ public class TeamGenerator526 {
             System.out.println("Error reading the CSV file.");
                 e.printStackTrace();
                 System.exit(1);
-                }
-        Collections.shuffle(people);
-        for(int i=0; i < 20 ;i++){
-            Team team = new Team ("Team " + (i + 1)+ "~" + teamNames.get(i))
-                
-            
-            
         }
     }
-    
-    }
-}
+       // Generate 20 teams with 5 members each
+        for (int i = 0; i < 20; i++) {
+            Team team = new Team("Team " + (i + 1));
+            for (int j = 0; j < 5; j++) {
+                if (!people.isEmpty()) {
+                    Person person = people.remove(0);
+                    team.addMember(person);
+                }
+            }
+            teams.add(team);
+        }}
+
+
