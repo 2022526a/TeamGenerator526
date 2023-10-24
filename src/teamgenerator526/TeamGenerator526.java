@@ -66,7 +66,7 @@ public class TeamGenerator526 {
 
         // Generate 20 teams with 5 members each
         for (int i = 0; i < 20; i++) {
-            Team team = new Team("Team " + (i + 1));
+            Team team = new Team("Team " + (i + 1) +"~"+ teamNames.get(i));
             for (int j = 0; j < 5; j++) {
                 if (!people.isEmpty()) {
                     Person person = people.remove(0);
