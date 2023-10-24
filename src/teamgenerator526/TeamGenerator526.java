@@ -7,16 +7,24 @@ package teamgenerator526;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 /**
  *
  * @author 35389
  */
 public class TeamGenerator526 {
+    
 
     /**
      * @param args the command line arguments
      */
+    List<Person> people = new ArrayList<>();
+    List<Team> teams = new ArrayList<>();
+    Random random = new Random ();
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         //adding csv file and reading it into memory
@@ -35,6 +43,9 @@ public class TeamGenerator526 {
                 e.printStackTrace();
                 System.exit(1);
                 }
+        Collections.shuffle(people);
+        for(int i=0; i < 20 ;i++){
+            Team team = new Team ("Team " + (i + 1)+ "~" + teamNames.get(i))
                 
             
             
