@@ -4,13 +4,16 @@
  */
 package teamgenerator526;
 
+;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 /**
  *
@@ -22,31 +25,33 @@ public class TeamGenerator526 {
     /**
      * @param args the command line arguments
      */
-    List<Person> people = new ArrayList<>();
-    List<Team> teams = new ArrayList<>();
-    Random random = new Random ();
-    List<String> teamNames = new ArrayList<>();
-     
-    public static void main(String[] args) throws IOException {
-        // TODO code application logic here
-        //adding csv file and reading it into memory
-        try (BufferedReader reader = new BufferedReader (new FileReader("MOCK_DATA.csv"))){
-        String line;
-        while ((line = reader.readLine())!=null){
-            String [] parts=line.split(",");
-            int id = Integer.parseInt(parts[0]);
-            String firstName = parts[1];
-            String lastName = parts[2];
-            String email = parts[3];
-            Person person =new Person (id , firstName, lastName , email);
+ public static void main(String[] args) {
+        List<Person> people = new ArrayList<>();
+        List<Team> teams = new ArrayList<>();
+        Random random = new Random();
+
+        // Read data from the CSV file and load it into memory
+        try (BufferedReader reader = new BufferedReader(new FileReader("MOCK_data.csv"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                int id = Integer.parseInt(parts[0]);
+                String firstName = parts[1];
+                String lastName = parts[2];
+                String email = parts[3];
+                Person person = new Person(id, firstName, lastName, email);
+                people.add(person);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading the CSV file.");
+            e.printStackTrace();
+            System.exit(1);
         }
-        }catch (IOException e){
-            System.out.println("Error reading the CSV file.");
-                e.printStackTrace();
-                System.exit(1);
-        }
-    }
-       // Generate 20 teams with 5 members each
+
+        // Shuffle the list of people
+        Collections.shuffle(people);
+
+        // Generate 20 teams with 5 members each
         for (int i = 0; i < 20; i++) {
             Team team = new Team("Team " + (i + 1));
             for (int j = 0; j < 5; j++) {
@@ -56,6 +61,16 @@ public class TeamGenerator526 {
                 }
             }
             teams.add(team);
-        }}
+        }
 
+        // Print each team and its members
+        for (Team team : teams) {
+            System.out.println("Team: " + team.name);
+            for (Person member : team.members) {
+                System.out.println("  - " + member.firstName + " " + member.lastName);
+            }
+            System.out.println();
+        }
+    }
+}
 
